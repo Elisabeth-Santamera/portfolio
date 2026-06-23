@@ -1,105 +1,343 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elisabeth Santamera Ditter</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elisabeth Santamera Ditter | Portfolio</title>
 
-    <style>
+  <style>
+    :root {
+      --navy: #263b5f;
+      --navy-dark: #17233a;
+      --gold: #e7c94f;
+      --cream: #f3e6b2;
+      --light: #f5f5f5;
+      --text: #1f2937;
+    }
 
-        body{
-            font-family: Arial, sans-serif;
-            margin:0;
-            background:#f8f9fa;
-            color:#333;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .hero{
-            text-align:center;
-            padding:80px 20px;
-            background:#1f2937;
-            color:white;
-        }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        .hero h1{
-            font-size:3rem;
-            margin-bottom:10px;
-        }
+    header {
+      background: var(--cream);
+      border-bottom: 8px solid var(--navy);
+      padding: 30px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      min-height: 90vh;
+    }
 
-        .hero p{
-            font-size:1.2rem;
-            max-width:700px;
-            margin:auto;
-        }
+    .hero-text {
+      max-width: 560px;
+    }
 
-        .btn{
-            display:inline-block;
-            margin-top:25px;
-            padding:12px 25px;
-            background:#f59e0b;
-            color:white;
-            text-decoration:none;
-            border-radius:8px;
-        }
+    .logo {
+      width: 210px;
+      margin-bottom: 35px;
+    }
 
-        section{
-            max-width:1000px;
-            margin:auto;
-            padding:60px 20px;
-        }
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 25px;
+    }
 
-        h2{
-            margin-bottom:20px;
-        }
+    .subtitle {
+      font-family: Arial, sans-serif;
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-bottom: 28px;
+    }
 
-        .card{
-            background:white;
-            padding:25px;
-            border-radius:12px;
-            box-shadow:0 2px 10px rgba(0,0,0,.1);
-        }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 35px;
+      font-family: Arial, sans-serif;
+    }
 
-    </style>
+    .tag {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
 
+    .btn {
+      display: inline-block;
+      background: var(--navy);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+    }
+
+    .phone-preview {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .phone-preview img {
+      width: 230px;
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.28);
+      border: 4px solid var(--navy-dark);
+      background: white;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .card {
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .card h3 {
+      color: var(--navy);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .features {
+      margin-top: 25px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      font-family: Arial, sans-serif;
+    }
+
+    .feature {
+      background: #f8f8f8;
+      padding: 12px;
+      border-left: 4px solid var(--gold);
+      border-radius: 8px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.16);
+    }
+
+    .about {
+      background: white;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .timeline-item {
+      border-top: 4px solid var(--gold);
+      padding-top: 18px;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: Arial, sans-serif;
+    }
+
+    .stack span {
+      background: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.08);
+    }
+
+    footer {
+      background: var(--navy-dark);
+      color: white;
+      text-align: center;
+      padding: 35px;
+      font-family: Arial, sans-serif;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .project {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="hero">
+<header>
+  <div class="hero-text">
+    <img class="logo" src="assets/logo.png" alt="Logo Global Biblion">
 
     <h1>Elisabeth Santamera Ditter</h1>
 
-    <p>
-        Desarrolladora de Aplicaciones Multiplataforma
-        especializada en backend, automatización y
-        proyectos con impacto social.
+    <p class="subtitle">
+      Técnica Superior en Desarrollo de Aplicaciones Multiplataforma,
+      con especial interés en backend, automatización y tecnología con impacto social.
     </p>
 
-    <a class="btn" href="#globalbiblion">
-        Ver Global Biblion
-    </a>
-
-</div>
-
-<section id="globalbiblion">
-
-    <h2>📚 Global Biblion</h2>
-
-    <div class="card">
-
-        <p>
-            Biblioteca digital colaborativa desarrollada como
-            Proyecto Final de DAM.
-        </p>
-
-        <p>
-            Integra libros de dominio público, audiolibros,
-            traducciones colaborativas y una comunidad de
-            voluntarios para facilitar el acceso a la cultura.
-        </p>
-
+    <div class="tags">
+      <span class="tag">Backend</span>
+      <span class="tag">Firebase</span>
+      <span class="tag">Python</span>
+      <span class="tag">Java</span>
+      <span class="tag">Flutter</span>
     </div>
 
+    <a class="btn" href="#global-biblion">Explorar Global Biblion</a>
+  </div>
+
+  <div class="phone-preview">
+    <img src="assets/app-inicio.png" alt="Pantalla inicio Global Biblion">
+    <img src="assets/app-biblioteca.png" alt="Pantalla biblioteca Global Biblion">
+  </div>
+</header>
+
+<section id="global-biblion">
+  <h2>📚 Global Biblion</h2>
+
+  <div class="project">
+    <div class="card">
+      <h3>Biblioteca digital colaborativa</h3>
+
+      <p>
+        Global Biblion nació como una idea personal y terminó convirtiéndose
+        en mi Proyecto Final de DAM, desarrollado junto a una compañera de clase.
+      </p>
+
+      <p>
+        Es una plataforma que reúne libros de dominio público, audiolibros
+        y una comunidad de voluntarios capaz de traducir obras o grabarlas
+        para facilitar el acceso a la lectura.
+      </p>
+
+      <div class="features">
+        <div class="feature">Audiolibros</div>
+        <div class="feature">Traducciones</div>
+        <div class="feature">Reseñas</div>
+        <div class="feature">Búsqueda por voz</div>
+        <div class="feature">Firebase</div>
+        <div class="feature">Cloud Functions</div>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <img src="assets/app-login.png" alt="Login">
+      <img src="assets/app-detalle.png" alt="Detalle libro">
+      <img src="assets/app-perfil.png" alt="Perfil usuario">
+      <img src="assets/app-voz.png" alt="Búsqueda por voz">
+    </div>
+  </div>
 </section>
+
+<section class="about">
+  <h2>🙋‍♀️ Sobre mí</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <strong>Comercio y marketing</strong>
+      <p>Experiencia formando equipos y entendiendo necesidades reales.</p>
+    </div>
+
+    <div class="timeline-item">
+      <strong>DAM</strong>
+      <p>Formación técnica en desarrollo de aplicaciones multiplataforma.</p>
+    </div>
+
+    <div class="timeline-item">
+      <strong>Backend</strong>
+      <p>Interés en lógica de negocio, datos y automatización.</p>
+    </div>
+
+    <div class="timeline-item">
+      <strong>Producto propio</strong>
+      <p>Global Biblion como proyecto vivo en evolución.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🛠️ Stack tecnológico</h2>
+
+  <div class="stack">
+    <span>Java</span>
+    <span>Python</span>
+    <span>PHP</span>
+    <span>Laravel</span>
+    <span>Firebase</span>
+    <span>Firestore</span>
+    <span>Cloud Functions</span>
+    <span>MySQL</span>
+    <span>PostgreSQL</span>
+    <span>GitHub</span>
+    <span>Flutter</span>
+  </div>
+</section>
+
+<footer>
+  <p>
+    Construyendo tecnología con impacto social, accesibilidad y propósito.
+  </p>
+  <p>© 2025 Elisabeth Santamera Ditter</p>
+</footer>
 
 </body>
 </html>
