@@ -8,6 +8,7 @@
 <meta property="og:description" content="Desarrollo con visión de negocio. Backend, automatización, arquitectura de aplicaciones.">
 <meta property="og:type" content="website">
 <title>Elisabeth Santamera Ditter — Developer & Product Builder</title>
+<link rel="icon" type="image/png" href="assets/logogbsinfondo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -102,11 +103,23 @@ h2 em { font-style: italic; color: var(--gold); }
 }
 .nav-brand {
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 500;
   color: var(--white);
   transition: color 0.3s;
   letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  white-space: nowrap;
+}
+.nav-brand img {
+  width: 64px; height: 64px;
+  object-fit: contain;
+  background: var(--white);
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 #nav.scrolled .nav-brand { color: var(--navy); }
 .nav-brand span { color: var(--gold); }
@@ -221,7 +234,83 @@ h1 em { font-style: italic; color: var(--gold-light); }
   transition: border-color 0.2s, color 0.2s;
 }
 .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-.hero-sidebar { display: flex; flex-direction: column; gap: 2.25rem; }
+.hero-sidebar { display: flex; flex-direction: column; gap: 2rem; }
+
+/* ── HERO 3D PHONE ────────────────────────────────────────── */
+.hero-3d-stage {
+  perspective: 1400px;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0 0.5rem;
+}
+.hero-phone {
+  width: 168px;
+  height: 342px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(-18deg) rotateX(6deg);
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+  animation: phoneFloat 6s ease-in-out infinite;
+}
+@keyframes phoneFloat {
+  0%, 100% { transform: rotateY(-18deg) rotateX(6deg) translateY(0); }
+  50% { transform: rotateY(-18deg) rotateX(6deg) translateY(-10px); }
+}
+.hero-phone-body {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: #060d1a;
+  border: 2px solid rgba(201,168,76,0.55);
+  box-shadow:
+    0 30px 60px -10px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(201,168,76,0.08),
+    inset 0 0 30px rgba(201,168,76,0.04);
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.hero-phone-body img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.hero-phone-notch {
+  position: absolute;
+  top: 9px; left: 50%; transform: translateX(-50%);
+  width: 46px; height: 5px;
+  background: rgba(6,13,26,0.85);
+  border-radius: 3px;
+  z-index: 3;
+}
+.hero-phone-edge {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 14px;
+  background: linear-gradient(90deg, rgba(201,168,76,0.18), transparent);
+  transform: rotateY(90deg) translateZ(83px);
+  right: 0;
+}
+.hero-phone-glow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle at 30% 20%, rgba(201,168,76,0.14) 0%, transparent 65%);
+  transform: translateZ(-60px);
+  pointer-events: none;
+}
+.hero-phone-badge {
+  position: absolute;
+  bottom: -16px; left: 50%;
+  transform: translateX(-50%) translateZ(40px);
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.85rem;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
 .hero-stat { border-left: 1px solid rgba(201,168,76,0.25); padding-left: 1.5rem; }
 .hero-stat-num {
   font-family: var(--serif);
@@ -467,69 +556,98 @@ h1 em { font-style: italic; color: var(--gold-light); }
 .screen-visual.boceto { background: #f8f5ef; border-bottom: 1px solid var(--cream-dark); }
 .screen-visual.figma  { background: #1e1e2e; border-bottom: 1px solid var(--cream-dark); }
 .screen-visual.app    { background: var(--navy); border-bottom: 1px solid var(--cream-dark); }
-/* Boceto mock */
-.paper-sheet {
-  width: 72%;
-  height: 80%;
-  background: #fffdf7;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 2px 3px 12px rgba(0,0,0,0.07);
-  padding: 1.2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-.paper-line { height: 2px; background: rgba(0,0,0,0.07); border-radius: 1px; }
-.paper-line.thick { height: 3px; background: rgba(0,0,0,0.14); width: 60%; }
-.paper-rect { background: rgba(0,0,0,0.05); border: 1px dashed rgba(0,0,0,0.12); flex: 1; display: flex; align-items: center; justify-content: center; }
-.paper-rect-label { font-size: 0.5rem; color: rgba(0,0,0,0.25); letter-spacing: 0.1em; text-transform: uppercase; }
-/* Figma mock */
-.figma-device {
-  width: 110px;
-  height: 200px;
-  background: #0d1117;
-  border: 1.5px solid rgba(201,168,76,0.25);
-  border-radius: 14px;
+/* Real-image device frames */
+.frame-design {
+  width: 100%; height: 100%;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-.figma-header { height: 36px; background: var(--gold); display: flex; align-items: center; padding: 0 0.6rem; }
-.figma-header-text { font-size: 0.45rem; font-family: var(--serif); font-weight: 700; color: var(--navy); letter-spacing: 0.08em; }
-.figma-body { flex: 1; padding: 0.6rem; display: flex; flex-direction: column; gap: 0.4rem; }
-.figma-hero-block { height: 55px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2px; }
-.figma-hero-text { font-size: 0.42rem; color: var(--gold); letter-spacing: 0.06em; }
-.figma-hero-sub { font-size: 0.38rem; color: rgba(245,240,232,0.3); }
-.figma-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
-.figma-mini-card { height: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
-.figma-bar-row { display: flex; gap: 4px; margin-top: auto; }
-.figma-btn { flex: 1; height: 18px; background: var(--gold); display: flex; align-items: center; justify-content: center; }
-.figma-btn-text { font-size: 0.38rem; color: var(--navy); font-weight: 700; }
-.figma-btn-ghost { flex: 1; height: 18px; border: 1px solid rgba(201,168,76,0.3); }
-/* App mock */
-.app-device {
-  width: 110px;
-  height: 210px;
-  background: #0a1628;
-  border: 2px solid rgba(201,168,76,0.45);
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 0 40px rgba(201,168,76,0.06);
   position: relative;
 }
-.app-notch { width: 32px; height: 4px; background: rgba(201,168,76,0.5); border-radius: 2px; margin: 8px auto 0; flex-shrink: 0; }
-.app-screen { flex: 1; padding: 0.5rem 0.6rem; display: flex; flex-direction: column; gap: 0.4rem; overflow: hidden; }
-.app-title-line { height: 5px; width: 65%; background: rgba(201,168,76,0.6); border-radius: 2px; }
-.app-sub-line { height: 3px; width: 80%; background: rgba(245,240,232,0.12); border-radius: 2px; }
-.app-cover { height: 65px; background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.18); display: flex; align-items: center; justify-content: center; margin: 0.25rem 0; }
-.app-cover-text { font-size: 0.4rem; color: rgba(201,168,76,0.6); letter-spacing: 0.1em; }
-.app-text-line { height: 3px; background: rgba(245,240,232,0.08); border-radius: 2px; }
-.app-cta-row { display: flex; gap: 3px; margin-top: auto; padding-bottom: 0.2rem; }
-.app-cta { flex: 1; height: 20px; background: var(--gold); display: flex; align-items: center; justify-content: center; }
-.app-cta-text { font-size: 0.38rem; color: var(--navy); font-weight: 700; letter-spacing: 0.06em; }
-.app-cta-outline { flex: 1; height: 20px; border: 1px solid rgba(201,168,76,0.35); }
+.frame-design img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s var(--ease); }
+.screen-cell:hover .frame-design img { transform: scale(1.04); }
+.frame-figma {
+  width: 88%; height: 78%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.25);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4);
+}
+.frame-figma img { width: 100%; height: 100%; object-fit: contain; background: #1e1e2e; transition: transform 0.5s var(--ease); }
+.screen-cell:hover .frame-figma img { transform: scale(1.05); }
+.frame-app {
+  width: 132px; height: 268px;
+  border-radius: 22px;
+  border: 2px solid rgba(201,168,76,0.4);
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+  position: relative;
+}
+.frame-app img { width: 100%; height: 100%; object-fit: contain; background: var(--navy); transition: transform 0.5s var(--ease); }
+.screen-cell:hover .frame-app img { transform: scale(1.05); }
+
+/* ── NARRATIVE BEATS (Problema / Idea) ───────────────────── */
+.narrative-beats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 3rem 0 4rem; }
+.beat {
+  background: var(--white);
+  border: 1px solid var(--cream-dark);
+  padding: 2.5rem;
+  position: relative;
+}
+.beat-num {
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+.beat-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.beat-text { font-size: 0.92rem; color: var(--text-muted); line-height: 1.85; }
+
+/* ── GALLERY ──────────────────────────────────────────────── */
+#gallery { padding: 8rem 0; background: var(--navy); }
+#gallery .section-label { color: var(--gold); }
+#gallery h2 { color: var(--white); }
+#gallery h2 em { color: var(--gold-light); }
+.gallery-sub { font-size: 0.9rem; color: rgba(245,240,232,0.45); margin-top: 0.75rem; max-width: 480px; line-height: 1.8; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+}
+.gallery-item {
+  position: relative;
+  aspect-ratio: 9/19;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(201,168,76,0.15);
+  background: #0d1726;
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.6s var(--ease); }
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 0.85rem 0.9rem;
+  background: linear-gradient(180deg, transparent, rgba(6,13,26,0.92) 60%);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
+
 /* Screen caption */
 .screen-caption { padding: 1.1rem 1.25rem; }
 .screen-caption-title { font-size: 0.78rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
@@ -663,6 +781,47 @@ h1 em { font-style: italic; color: var(--gold-light); }
   color: rgba(201,168,76,0.2);
   font-size: 0.85rem;
   letter-spacing: 0.5em;
+}
+
+/* ── CONTRIBUTION ─────────────────────────────────────────── */
+#contribution { padding: 8rem 0; background: var(--cream); }
+.contribution-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+.contribution-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+.contribution-item {
+  padding: 1.5rem 1.75rem;
+  background: var(--white);
+  border-left: 2px solid var(--gold);
+}
+.contribution-item-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.contribution-item-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.75; }
+.contribution-visual {
+  position: relative;
+  border: 1px solid var(--cream-dark);
+  background: var(--white);
+  padding: 1rem;
+}
+.contribution-visual img { width: 100%; border-radius: 4px; }
+.contribution-visual-caption {
+  margin-top: 0.9rem;
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  font-style: italic;
+  text-align: center;
 }
 
 /* ── SKILLS ───────────────────────────────────────────────── */
@@ -862,12 +1021,17 @@ footer {
   .screens-grid { grid-template-columns: 1fr; }
   .future-projects { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr 1fr; }
+  .narrative-beats { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .contribution-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-phone { width: 130px; height: 264px; }
   .linkedin-inner { flex-direction: column; align-items: flex-start; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
 @media (max-width: 600px) {
   .skills-grid { grid-template-columns: 1fr; }
   .project-process { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
@@ -879,10 +1043,12 @@ footer {
 
 <!-- ── NAVIGATION ──────────────────────────────────────────── -->
 <nav id="nav">
-  <div class="nav-brand">E<span>.</span>Santamera</div>
+  <div class="nav-brand"><img src="assets/logogbsinfondo.png" alt="Global Biblion">Elfriede Elisabeth Santamera<span> Ditter</span></div>
   <ul class="nav-links">
     <li><a href="#about">Perfil</a></li>
     <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#gallery">Galería</a></li>
+    <li><a href="#contribution">Mi aportación</a></li>
     <li><a href="#skills">Habilidades</a></li>
     <li><a href="#github">GitHub</a></li>
     <li><a href="#vision">Visión</a></li>
@@ -906,17 +1072,30 @@ footer {
       </div>
     </div>
     <div class="hero-sidebar">
-      <div class="hero-stat">
-        <div class="hero-stat-num">DAM</div>
-        <div class="hero-stat-label">Técnica Superior en Desarrollo de Aplicaciones Multiplataforma</div>
+      <div class="hero-3d-stage">
+        <div class="hero-phone" id="heroPhone">
+          <div class="hero-phone-glow"></div>
+          <div class="hero-phone-edge"></div>
+          <div class="hero-phone-body">
+            <div class="hero-phone-notch"></div>
+            <img src="assets/app-inicio.png" alt="Global Biblion — pantalla de inicio de la app Android">
+          </div>
+          <div class="hero-phone-badge">Global Biblion · Android</div>
+        </div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">Full</div>
-        <div class="hero-stat-label">Stack — diseño, backend, automatización y arquitectura cloud</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">2024</div>
-        <div class="hero-stat-label">Global Biblion — proyecto principal en producción</div>
+      <div class="hero-stat" style="border-left:none;padding-left:0;display:flex;gap:1.75rem;flex-wrap:wrap">
+        <div>
+          <div class="hero-stat-num" style="font-size:1.4rem">DAM</div>
+          <div class="hero-stat-label">Técnica Superior</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" style="font-size:1.4rem">Full</div>
+          <div class="hero-stat-label">Stack de producto</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" style="font-size:1.4rem">2024</div>
+          <div class="hero-stat-label">Global Biblion</div>
+        </div>
       </div>
       <div class="hero-tags">
         <span class="hero-tag">Python</span>
@@ -938,22 +1117,23 @@ footer {
     <div class="about-grid reveal">
       <div class="about-text">
         <h2>Desarrollo con <em>contexto.</em></h2>
-        <p style="margin-top:1.5rem">Soy Elisabeth Santamera Ditter, Técnica Superior en DAM. Antes de dedicarme al desarrollo trabajé en comercio y marketing: sectores donde aprendí a priorizar la experiencia del usuario, gestionar equipos y tomar decisiones orientadas al impacto real.</p>
-        <p>Esa doble perspectiva —negocio y código— me permite construir productos que no solo funcionan técnicamente, sino que tienen sentido desde el primer uso. Me interesa especialmente el backend, la automatización, la arquitectura de sistemas y la seguridad aplicada.</p>
-        <p>No me presento como especialista en una tecnología. Me presento como alguien capaz de entender un problema, diseñar una solución y llevarla a producción.</p>
+        <p style="margin-top:1.5rem">Soy Elisabeth Santamera Ditter, desarrolladora de software con un pasado en comercio y marketing que me dio la capacidad de traducir necesidades de negocio en código eficiente.</p>
+        <p>No tiro líneas de código a ciegas. Mi experiencia formando equipos y analizando datos me enseñó que lo primero es entender el problema y el impacto que tiene en las personas.</p>
+        <p>El backend, la arquitectura de sistemas, la automatización y la seguridad. Me encanta diseñar los cimientos invisibles que hacen que un producto funcione a la perfección. En un sector en constante evolución, mi motor es la curiosidad innata y las ganas de aprender algo nuevo todos los días. </p>
       </div>
       <div class="pillars">
         <div class="pillar reveal reveal-delay-1">
           <div class="pillar-title">Visión de producto</div>
           <div class="pillar-desc">Experiencia en comercio y marketing que aporta criterio para priorizar funcionalidades, orientación al usuario y comprensión del valor real de lo que se construye.</div>
+          
         </div>
         <div class="pillar reveal reveal-delay-2">
           <div class="pillar-title">Base técnica sólida</div>
-          <div class="pillar-desc">Formación en DAM con enfoque en backend, automatización con Python, arquitecturas cloud con Firebase y desarrollo Android nativo.</div>
+          <div class="pillar-desc">Formación en DAM con enfoque en backend, automatización con Python, arquitecturas cloud con Firebase y desarrollo Android studio en lenguaje Kotlin.</div>
         </div>
         <div class="pillar reveal reveal-delay-3">
           <div class="pillar-title">Curiosidad constante</div>
-          <div class="pillar-desc">Interés activo en ciberseguridad, arquitectura de sistemas y automatización de procesos. Mentalidad de aprendizaje continuo.</div>
+          <div class="pillar-desc">Interés activo en ciberseguridad, arquitectura de sistemas y automatización de procesos, y en continuo aprendizaje.</div>
         </div>
       </div>
     </div>
@@ -981,7 +1161,7 @@ footer {
             <span class="project-badge">TFG · Proyecto principal</span>
           </div>
           <div class="project-name">Global <em>Biblion</em></div>
-          <p class="project-tagline">Biblioteca digital colaborativa para el acceso abierto a la cultura. Libros de dominio público, audiolibros y traducciones colaborativas en una plataforma Android conectada en tiempo real.</p>
+          <p class="project-tagline">Biblioteca digital con acceso abierto a la cultura, donde encontraremos libros de dominio público y audiolibros, y una comunidad de traductores voluntarios que colaboran en traducir y corregir en tiempo real.</p>
         </div>
       </div>
       <div class="project-content">
@@ -995,7 +1175,7 @@ footer {
             <div class="tech-row">
               <span class="tech-chip featured">Firebase</span>
               <span class="tech-chip featured">Python</span>
-              <span class="tech-chip">Android · Java</span>
+              <span class="tech-chip featured">Android Studio · Kotlin</span>
               <span class="tech-chip">Cloud Functions</span>
               <span class="tech-chip">Firestore</span>
               <span class="tech-chip">REST APIs</span>
@@ -1004,7 +1184,7 @@ footer {
           <div class="meta-item">
             <div class="meta-label">Herramientas de diseño</div>
             <div class="tech-row">
-              <span class="tech-chip">Figma</span>
+              <span class="tech-chip featured">Figma</span>
               <span class="tech-chip">Material Design</span>
               <span class="tech-chip">Sistema de diseño propio</span>
             </div>
@@ -1038,85 +1218,57 @@ footer {
         <div class="process-step done">
           <div class="step-idx">04</div>
           <div class="step-name">App Android</div>
-          <div class="step-detail">Desarrollo nativo con integración Firebase en tiempo real y funcionalidades colaborativas.</div>
+          <div class="step-detail">Desarrollo nativo con integración Firebase  y funcionalidades colaborativas.</div>
         </div>
       </div>
     </div>
 
+    <!-- NARRATIVE: PROBLEMA + IDEA -->
+    <div class="narrative-beats reveal">
+      <div class="beat">
+        <span class="beat-num">01 · El problema</span>
+        <div class="beat-title">La cultura libre está dispersa.</div>
+        <p class="beat-text">A pesar de ser patrimonio de todos, las obras de dominio público están dispersas en plataformas obsoletas, mal diseñadas y en distintos idiomas, lo que excluye a personas con baja visión, bajos recursos o sin conocimientos técnicos. Al final, acceder a la cultura universal requiere un tiempo, una conectividad y un dinero que no todo el mundo tiene, convirtiendo un derecho colectivo en un privilegio.</p>
+      </div>
+      <div class="beat">
+        <span class="beat-num">02 · La idea</span>
+        <div class="beat-title">Una biblioteca, hecha por su comunidad.</div>
+        <p class="beat-text">El objetivo es centralizar el acceso al patrimonio cultural en una plataforma única, intuitiva y abierta, donde cualquier persona pueda descubrir, escuchar y traducir libros libres de derechos. Rompiendo las barreras técnicas, de idioma y de accesibilidad, el proyecto se sostiene y crece gracias a una comunidad de voluntarios que colabora activamente para democratizar la cultura y devolver el dominio público a quien verdaderamente pertenece: todo el mundo.</p>
+      </div>
+    </div>
+
     <!-- SCREENS SHOWCASE -->
-    <div class="screens-label reveal">Del papel a la pantalla</div>
+    <div class="screens-label reveal">Del diseño a la pantalla</div>
     <div class="screens-grid reveal">
-      <!-- Boceto -->
+      <!-- Diseño -->
       <div class="screen-cell">
         <div class="screen-visual boceto">
-          <div class="paper-sheet">
-            <div class="paper-line thick"></div>
-            <div class="paper-line" style="width:40%"></div>
-            <div class="paper-rect" style="height:60px;flex:none;margin-top:0.25rem">
-              <span class="paper-rect-label">Cover</span>
-            </div>
-            <div class="paper-line" style="margin-top:0.5rem"></div>
-            <div class="paper-line" style="width:70%"></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.25rem;flex:1">
-              <div class="paper-rect"><span class="paper-rect-label">img</span></div>
-              <div class="paper-rect"><span class="paper-rect-label">img</span></div>
-            </div>
+          <div class="frame-design">
+            <img src="assets/biblioteca_diseño.jpeg" alt="Diseño visual de la pantalla de biblioteca de Global Biblion" loading="lazy">
           </div>
         </div>
         <div class="screen-caption">
-          <div class="screen-caption-title">Boceto en papel</div>
-          <div class="screen-caption-desc">Primera iteración — pantalla principal</div>
+          <div class="screen-caption-title">Diseño visual</div>
+          <div class="screen-caption-desc">Sistema de diseño — pantalla de biblioteca</div>
         </div>
       </div>
       <!-- Figma -->
       <div class="screen-cell">
         <div class="screen-visual figma">
-          <div class="figma-device">
-            <div class="figma-header"><span class="figma-header-text">GLOBAL BIBLION</span></div>
-            <div class="figma-body">
-              <div class="figma-hero-block">
-                <span class="figma-hero-text">Destacado</span>
-                <span class="figma-hero-sub">Don Quijote de la Mancha</span>
-              </div>
-              <div class="figma-row">
-                <div class="figma-mini-card"></div>
-                <div class="figma-mini-card"></div>
-              </div>
-              <div class="figma-row">
-                <div class="figma-mini-card"></div>
-                <div class="figma-mini-card"></div>
-              </div>
-              <div class="figma-bar-row">
-                <div class="figma-btn"><span class="figma-btn-text">EXPLORAR</span></div>
-                <div class="figma-btn-ghost"></div>
-              </div>
-            </div>
+          <div class="frame-figma">
+            <img src="assets/figma-prototipo1.png" alt="Prototipo interactivo en Figma de Global Biblion" loading="lazy">
           </div>
         </div>
         <div class="screen-caption">
           <div class="screen-caption-title">Prototipo Figma</div>
-          <div class="screen-caption-desc">Sistema de diseño y guía de estilos</div>
+          <div class="screen-caption-desc">Flujo interactivo y guía de estilos</div>
         </div>
       </div>
       <!-- App -->
       <div class="screen-cell">
         <div class="screen-visual app">
-          <div class="app-device">
-            <div class="app-notch"></div>
-            <div class="app-screen">
-              <div class="app-title-line"></div>
-              <div class="app-sub-line"></div>
-              <div class="app-cover">
-                <span class="app-cover-text">PORTADA</span>
-              </div>
-              <div class="app-text-line"></div>
-              <div class="app-text-line" style="width:75%"></div>
-              <div class="app-text-line" style="width:60%"></div>
-              <div class="app-cta-row">
-                <div class="app-cta"><span class="app-cta-text">LEER</span></div>
-                <div class="app-cta-outline"></div>
-              </div>
-            </div>
+          <div class="frame-app">
+            <img src="assets/app-detalle.png" alt="Pantalla de detalle de libro en la app Android de Global Biblion" loading="lazy">
           </div>
         </div>
         <div class="screen-caption">
@@ -1126,7 +1278,7 @@ footer {
       </div>
     </div>
     <div class="screens-note reveal">
-      Los placeholders anteriores representan los espacios para tus capturas reales: fotografías de bocetos en papel, pantallas de Figma e imágenes de la aplicación Android. Se sustituyen al subir tus archivos al repositorio.
+      Tres etapas del mismo viaje: del sistema de diseño al prototipo navegable en Figma, hasta la app Android funcionando en producción.
     </div>
 
     <!-- FUTURE PROJECTS -->
@@ -1191,6 +1343,78 @@ footer {
       </div>
     </div>
     <p style="margin-top:2rem;font-size:0.8rem;color:rgba(245,240,232,0.3);font-style:italic">La capa de automatización gestiona la ingesta, transformación y enriquecimiento de datos desde fuentes de dominio público, sin intervención manual.</p>
+  </div>
+</section>
+
+<!-- ── GALLERY ──────────────────────────────────────────────── -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-label">Galería interactiva</div>
+    <div class="reveal">
+      <h2>La app, <em>pantalla a pantalla.</em></h2>
+      <p class="gallery-sub">Un recorrido por la experiencia real de Global Biblion: inicio, login, biblioteca, detalle de obra, lectura por voz y perfil. Producto en producción, no maquetas.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="assets/app-inicio.png" alt="Pantalla de inicio de Global Biblion" loading="lazy">
+        <div class="gallery-caption">Inicio</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/app-login.png" alt="Pantalla de login de Global Biblion" loading="lazy">
+        <div class="gallery-caption">Acceso</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/app-biblioteca.png" alt="Pantalla de biblioteca de Global Biblion" loading="lazy">
+        <div class="gallery-caption">Biblioteca</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/app-detalle.png" alt="Pantalla de detalle de obra en Global Biblion" loading="lazy">
+        <div class="gallery-caption">Detalle de obra</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/app-voz.png" alt="Pantalla de lectura por voz en Global Biblion" loading="lazy">
+        <div class="gallery-caption">Lectura por voz</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/app-perfil.png" alt="Pantalla de perfil de usuario en Global Biblion" loading="lazy">
+        <div class="gallery-caption">Perfil</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTRIBUTION ──────────────────────────────────────────── -->
+<section id="contribution">
+  <div class="container">
+    <div class="section-label">Mi aportación</div>
+    <div class="contribution-grid">
+      <div class="reveal">
+        <h2>Mi parte en <em>Global Biblion.</em></h2>
+        <p style="font-size:0.95rem;line-height:1.87;color:var(--text-body);margin-top:1.5rem">Global Biblion lo desarrollé junto a una compañera. Dentro de ese trabajo conjunto, esto es lo que llevé yo:</p>
+        <div class="contribution-list">
+          <div class="contribution-item">
+            <div class="contribution-item-title">Idea y enfoque social</div>
+            <div class="contribution-item-desc">Propuse la idea inicial de una biblioteca colaborativa de acceso abierto a la cultura, y el enfoque social que terminó guiando el proyecto.</div>
+          </div>
+          <div class="contribution-item">
+            <div class="contribution-item-title">Backend y automatización</div>
+            <div class="contribution-item-desc">Diseño de la base de datos, conexiones, reglas de seguridad y automatizaciones con Python para la ingesta y gestión de contenido.</div>
+          </div>
+          <div class="contribution-item">
+            <div class="contribution-item-title">Análisis de sostenibilidad</div>
+            <div class="contribution-item-desc">Preparé y presenté de forma individual el estudio de sostenibilidad del proyecto, reconocido con Matrícula de Honor.</div>
+          </div>
+          <div class="contribution-item">
+            <div class="contribution-item-title">Diseño de producto</div>
+            <div class="contribution-item-desc">Participé en el sistema de diseño y los flujos de usuario, con foco en accesibilidad y en la comunidad de voluntarios.</div>
+          </div>
+        </div>
+      </div>
+      <div class="contribution-visual reveal reveal-delay-1">
+        <img src="assets/registro_diseño.jpeg" alt="Diseño de la pantalla de registro de Global Biblion, parte del sistema de diseño desarrollado" loading="lazy">
+        <div class="contribution-visual-caption">Pantalla de registro — sistema de diseño de Global Biblion</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1374,6 +1598,24 @@ footer {
 </footer>
 
 <script>
+// Hero phone 3D parallax (mouse-driven tilt, disabled on touch / reduced-motion)
+const heroPhone = document.getElementById('heroPhone');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (heroPhone && !prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
+  const hero = document.getElementById('hero');
+  hero.addEventListener('mouseenter', () => { heroPhone.style.animation = 'none'; });
+  hero.addEventListener('mousemove', (e) => {
+    const r = hero.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    heroPhone.style.transform = `rotateY(${-18 + x * 16}deg) rotateX(${6 - y * 12}deg)`;
+  });
+  hero.addEventListener('mouseleave', () => {
+    heroPhone.style.transform = 'rotateY(-18deg) rotateX(6deg)';
+    heroPhone.style.animation = 'phoneFloat 6s ease-in-out infinite';
+  });
+}
+
 // Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
